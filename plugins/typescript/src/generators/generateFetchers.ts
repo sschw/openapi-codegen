@@ -155,6 +155,7 @@ export const generateFetchers = async (context: Context, config: Config) => {
           injectedHeaders: config.injectedHeaders,
           pathParameters: verbs.parameters,
           variablesExtraPropsType,
+          useSchemaTypes: config.useSchemaTypes,
         });
 
         nodes.push(

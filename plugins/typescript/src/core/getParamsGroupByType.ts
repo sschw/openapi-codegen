@@ -14,7 +14,8 @@ import {
  */
 export const getParamsGroupByType = (
   parameters: OperationObject["parameters"] = [],
-  components: ComponentsObject = {}
+  components: ComponentsObject = {},
+  useSchemaTypes: boolean = false
 ) => {
   const {
     query: queryParams = [] as ParameterObject[],
@@ -29,6 +30,9 @@ export const getParamsGroupByType = (
         );
         if (!schema) {
           throw new Error(`${p.$ref} not found!`);
+        }
+        if (useSchemaTypes) {
+          schema.schema = p;
         }
         return schema;
       } else {

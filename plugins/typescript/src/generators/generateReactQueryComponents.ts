@@ -140,6 +140,7 @@ export const generateReactQueryComponents = async (
             ),
             f.createLiteralTypeNode(f.createStringLiteral("fetcherOptions"))
           ),
+          useSchemaTypes: config.useSchemaTypes,
         });
 
         nodes.push(...declarationNodes);

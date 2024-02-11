@@ -31,4 +31,10 @@ export type ConfigBase = {
    * @default false
    */
   useEnums?: boolean;
+  /**
+   * Allows using schema types instead of inline types.
+   *
+   * @default false
+   */
+  useSchemaTypes?: boolean;
 };
