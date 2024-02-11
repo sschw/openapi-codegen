@@ -19,6 +19,7 @@ export type GetOperationTypesOptions = {
   pathParameters?: PathItemObject["parameters"];
   printNodes: (nodes: ts.Node[]) => string;
   variablesExtraPropsType: ts.TypeNode;
+  useSchemaTypes?: boolean;
 };
 
 export type GetOperationTypesOutput = {
@@ -43,6 +44,7 @@ export const getOperationTypes = ({
   pathParameters = [],
   injectedHeaders = [],
   variablesExtraPropsType,
+  useSchemaTypes,
 }: GetOperationTypesOptions): GetOperationTypesOutput => {
   const declarationNodes: ts.Node[] = [];
 
@@ -69,7 +71,8 @@ export const getOperationTypes = ({
   // Generate params types
   const { pathParams, queryParams, headerParams } = getParamsGroupByType(
     [...pathParameters, ...(operation.parameters || [])],
-    openAPIDocument.components
+    openAPIDocument.components,
+    useSchemaTypes,
   );
 
   // Check if types can be marked as optional (all properties are optional)

@@ -141,9 +141,8 @@ export const generateReactQueryFunctions = async (
             ),
             f.createLiteralTypeNode(f.createStringLiteral("fetcherOptions"))
           ),
+          useSchemaTypes: config.useSchemaTypes,
         });
-
-        
 
         const operationFetcherFnName = `fetch${c.pascal(operationId)}`;
         const operationQueryFnName = `${c.pascal(operationId)}Query`;
