@@ -13,8 +13,8 @@ export const getEnumProperties = (
 
   schemaArray.forEach((schemaObj) => {
     const name = schemaObj[0];
-    const schema = schemaObj[1];
-
+    const schema = schemaObj[1].schema ?? schemaObj[1];
+    
     if (schema.enum) {
       enumProperties.push([name, schema]);
     } else if (schema.type === "object" && schema.properties) {
