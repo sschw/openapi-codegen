@@ -1,3 +1,5 @@
+### This is a fork of the original project [openapi-codegen](https://github.com/fabien0102/openapi-codegen) by Fabien BERNARD.
+
 <br>
 <br>
 <br>
@@ -33,7 +35,7 @@
 1. **Initialize the generator**
 
    ```bash
-   npx @openapi-codegen/cli init
+   npx @sschw/openapi-codegen-cli init
    ```
    
    <img style="max-width: 400px" src="https://user-images.githubusercontent.com/271912/194000679-5a4501b8-5fc0-430c-9217-028bf91a5dcd.gif">
@@ -167,11 +169,11 @@ Everything is typed and self-documented, but just in case, you can find here exa
 
 ```ts
 // openapi-codegen.config.ts
-import { defineConfig } from "@openapi-codegen/cli";
+import { defineConfig } from "@sschw/openapi-codegen-cli";
 import {
   generateSchemaTypes,
   generateReactQueryComponents,
-} from "@openapi-codegen/typescript";
+} from "@sschw/openapi-codegen-typescript";
 
 export default defineConfig({
   example: {
@@ -207,7 +209,7 @@ export default defineConfig({
 
 ### Plugins
 
-the `@openapi-codegen/cli` supports these generator plugins:
+the `@sschw/openapi-codegen-cli` supports these generator plugins:
 
 #### **generateSchemaTypes** (frontend/backend)
 

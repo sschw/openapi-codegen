@@ -1,5 +1,5 @@
 {
-  "name": "@openapi-codegen/cli",
+  "name": "@sschw/openapi-codegen-cli",
   "version": "3.0.1",
   "description": "OpenAPI Codegen cli",
   "main": "lib/index.js",
@@ -9,7 +9,8 @@
     "openapi-codegen": "lib/cli.js"
   },
   "repository": {
-    "url": "https://github.com/fabien0102/openapi-codegen",
+    "type": "git",
+    "url": "git+https://github.com/sschw/openapi-codegen.git",
     "directory": "cli"
   },
   "publishConfig": {

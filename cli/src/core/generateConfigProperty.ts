@@ -295,21 +295,21 @@ export function getImports(plugin: Plugin): Import[] {
     case "typescript/fetch":
       return [
         {
-          module: "@openapi-codegen/typescript",
+          module: "@sschw/openapi-codegen-typescript",
           namedImports: ["generateSchemaTypes", "generateFetchers"],
         },
       ];
     case "typescript/types-only":
       return [
         {
-          module: "@openapi-codegen/typescript",
+          module: "@sschw/openapi-codegen-typescript",
           namedImports: ["generateSchemaTypes"],
         },
       ];
     case "typescript/react-query":
       return [
         {
-          module: "@openapi-codegen/typescript",
+          module: "@sschw/openapi-codegen-typescript",
           namedImports: ["generateSchemaTypes", "generateReactQueryComponents"],
         },
       ];

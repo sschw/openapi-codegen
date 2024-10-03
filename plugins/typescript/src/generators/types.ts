@@ -2,7 +2,7 @@ import { OpenAPIObject } from "openapi3-ts";
 import * as c from "case";
 
 /**
- * Generator context (provided by `@openapi-codegen/cli`)
+ * Generator context (provided by `@sschw/openapi-codegen-cli`)
  */
 export type Context = {
   openAPIDocument: OpenAPIObject;
