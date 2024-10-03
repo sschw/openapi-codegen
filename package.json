@@ -1,8 +1,11 @@
 {
-  "name": "openapi-codegen",
+  "name": "@sschw/openapi-codegen",
   "version": "0.0.1",
   "description": "OpenAPI code generator framework",
-  "repository": "https://github.com/fabien0102/openapi-codegen",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sschw/openapi-codegen.git"
+  },
   "author": "Fabien Bernard",
   "license": "MIT",
   "private": true,

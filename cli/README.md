@@ -1,3 +1,5 @@
+### This is a fork of the original project [openapi-codegen](https://github.com/fabien0102/openapi-codegen) by Fabien BERNARD.
+
 # OpenAPI Codegen
 
 ## Getting started
@@ -6,11 +8,11 @@
 
 ```ts
 // openapi-codegen.config.ts
-import { defineConfig } from "@openapi-codegen/cli";
+import { defineConfig } from "@sschw/openapi-codegen-cli";
 import {
   generateSchemaTypes,
   generateReactQueryComponents,
-} from "@openapi-codegen/typescript";
+} from "@sschw/openapi-codegen-typescript";
 
 export default defineConfig({
   example: {

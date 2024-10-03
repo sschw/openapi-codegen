@@ -95,7 +95,7 @@ export class InitCommand extends Command {
     return {
       isExistingConfig: false,
       sourceFile,
-      importModules: ["@openapi-codegen/cli"],
+      importModules: ["@sschw/openapi-codegen-cli"],
     };
   }
 
@@ -206,22 +206,22 @@ export class InitCommand extends Command {
           path.join(process.cwd(), "package.json")
         );
         const hasCli = this.hasDependencyInstalled(
-          "@openapi-codegen/cli",
+          "@sschw/openapi-codegen-cli",
           packageJson
         );
         const hasTsPlugin = this.hasDependencyInstalled(
-          "@openapi-codegen/typescript",
+          "@sschw/openapi-codegen-typescript",
           packageJson
         );
         if (!hasCli && !hasTsPlugin) {
-          nextSteps.push("npm install -D @openapi-codegen/{cli,typescript}");
+          nextSteps.push("npm install -D @sschw/openapi-codegen-{cli,typescript}");
         } else if (!hasCli) {
-          nextSteps.push("npm install -D @openapi-codegen/cli");
+          nextSteps.push("npm install -D @sschw/openapi-codegen-cli");
         } else if (!hasTsPlugin) {
-          nextSteps.push("npm install -D @openapi-codegen/typescript");
+          nextSteps.push("npm install -D @sschw/openapi-codegen-typescript");
         }
       } catch {
-        nextSteps.push("npm install -D @openapi-codegen/{cli,typescript}");
+        nextSteps.push("npm install -D @sschw/openapi-codegen-{cli,typescript}");
       }
       nextSteps.push(`npx openapi-codegen gen ${namespace}`);
 
