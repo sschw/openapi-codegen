@@ -8,7 +8,7 @@ describe("updateConfig", () => {
   );
 
   it("should add import statement if not already existing", () => {
-    const sourceText = `import { defineConfig } from "@openapi-codegen/cli";
+    const sourceText = `import { defineConfig } from "@sschw/openapi-codegen-cli";
     
     // This comment should stay
     export default defineConfig({})`;
@@ -20,19 +20,19 @@ describe("updateConfig", () => {
 
     const transformedSourceFile = updateConfig({
       sourceFile,
-      existingImports: ["@openapi-codegen/cli"],
+      existingImports: ["@sschw/openapi-codegen-cli"],
       importsToInsert: [
         {
           namedImports: ["generateReactQueryComponents", "generateSchemaTypes"],
-          module: "@openapi-codegen/typescript",
+          module: "@sschw/openapi-codegen-typescript",
         },
       ],
       configProperty,
     });
 
     expect(printer.printFile(transformedSourceFile)).toMatchInlineSnapshot(`
-     "import { generateReactQueryComponents, generateSchemaTypes } from "@openapi-codegen/typescript";
-     import { defineConfig } from "@openapi-codegen/cli";
+     "import { generateReactQueryComponents, generateSchemaTypes } from "@sschw/openapi-codegen-typescript";
+     import { defineConfig } from "@sschw/openapi-codegen-cli";
      // This comment should stay
      export default defineConfig({
          test: {}
@@ -42,8 +42,8 @@ describe("updateConfig", () => {
   });
 
   it("should update import statement if already existing", () => {
-    const sourceText = `import { defineConfig } from "@openapi-codegen/cli";
-    import { renameComponent } from "@openapi-codegen/typescript";
+    const sourceText = `import { defineConfig } from "@sschw/openapi-codegen-cli";
+    import { renameComponent } from "@sschw/openapi-codegen-typescript";
 
     export default defineConfig({
       plop: {}
@@ -56,19 +56,22 @@ describe("updateConfig", () => {
 
     const transformedSourceFile = updateConfig({
       sourceFile,
-      existingImports: ["@openapi-codegen/cli", "@openapi-codegen/typescript"],
+      existingImports: [
+        "@sschw/openapi-codegen-cli",
+        "@sschw/openapi-codegen-typescript",
+      ],
       importsToInsert: [
         {
           namedImports: ["generateReactQueryComponents", "generateSchemaTypes"],
-          module: "@openapi-codegen/typescript",
+          module: "@sschw/openapi-codegen-typescript",
         },
       ],
       configProperty,
     });
 
     expect(printer.printFile(transformedSourceFile)).toMatchInlineSnapshot(`
-     "import { defineConfig } from "@openapi-codegen/cli";
-     import { renameComponent, generateReactQueryComponents, generateSchemaTypes } from "@openapi-codegen/typescript";
+     "import { defineConfig } from "@sschw/openapi-codegen-cli";
+     import { renameComponent, generateReactQueryComponents, generateSchemaTypes } from "@sschw/openapi-codegen-typescript";
      export default defineConfig({
          plop: {},
          test: {}
@@ -78,8 +81,8 @@ describe("updateConfig", () => {
   });
 
   it("should not create duplicates imports", () => {
-    const sourceText = `import { defineConfig } from "@openapi-codegen/cli";
-    import { renameComponent, generateReactQueryComponents } from "@openapi-codegen/typescript";
+    const sourceText = `import { defineConfig } from "@sschw/openapi-codegen-cli";
+    import { renameComponent, generateReactQueryComponents } from "@sschw/openapi-codegen-typescript";
 
     export default defineConfig({})`;
     const sourceFile = ts.createSourceFile(
@@ -90,19 +93,22 @@ describe("updateConfig", () => {
 
     const transformedSourceFile = updateConfig({
       sourceFile,
-      existingImports: ["@openapi-codegen/cli", "@openapi-codegen/typescript"],
+      existingImports: [
+        "@sschw/openapi-codegen-cli",
+        "@sschw/openapi-codegen-typescript",
+      ],
       importsToInsert: [
         {
           namedImports: ["generateReactQueryComponents", "generateSchemaTypes"],
-          module: "@openapi-codegen/typescript",
+          module: "@sschw/openapi-codegen-typescript",
         },
       ],
       configProperty,
     });
 
     expect(printer.printFile(transformedSourceFile)).toMatchInlineSnapshot(`
-     "import { defineConfig } from "@openapi-codegen/cli";
-     import { renameComponent, generateReactQueryComponents, generateSchemaTypes } from "@openapi-codegen/typescript";
+     "import { defineConfig } from "@sschw/openapi-codegen-cli";
+     import { renameComponent, generateReactQueryComponents, generateSchemaTypes } from "@sschw/openapi-codegen-typescript";
      export default defineConfig({
          test: {}
      });

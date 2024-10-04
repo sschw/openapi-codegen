@@ -1,8 +1,8 @@
 import {
   generateSchemaTypes,
   generateReactQueryComponents,
-} from "@openapi-codegen/typescript";
-import { defineConfig } from "@openapi-codegen/cli";
+} from "@sschw/openapi-codegen-typescript";
+import { defineConfig } from "@sschw/openapi-codegen-cli";
 
 export default defineConfig({
   github: {

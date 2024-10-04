@@ -1,3 +1,5 @@
+### This is a fork of the original project [openapi-codegen](https://github.com/fabien0102/openapi-codegen) by Fabien BERNARD.
+
 # OpenAPI Codegen typescript
 
 Collection of typescript generators & utils
@@ -19,11 +21,11 @@ Example:
 ```ts
 // openapi-codegen.config.ts
 
-import { defineConfig } from "@openapi-codegen/cli";
+import { defineConfig } from "@sschw/openapi-codegen-cli";
 import {
   generateReactQueryComponents,
   generateSchemaTypes,
-} from "@openapi-codegen/typescript";
+} from "@sschw/openapi-codegen-typescript";
 
 export default defineConfig({
   petstore: {
@@ -92,12 +94,12 @@ export function usePetStoreContext<
   TQueryFnData = unknown,
   TError = unknown,
   TData = TQueryFnData,
-  TQueryKey extends QueryKey = QueryKey
+  TQueryKey extends QueryKey = QueryKey,
 >(
   queryOptions?: Omit<
     UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>,
     "queryKey" | "queryFn"
-  >
+  >,
 ): BadassContext {
   const token = window.localStorage.getItem("token");
 
@@ -172,12 +174,12 @@ Example:
 ```ts
 // openapi-codegen.config.ts
 
-import { defineConfig } from "@openapi-codegen/cli";
+import { defineConfig } from "@sschw/openapi-codegen-cli";
 import {
   generateReactQueryComponents,
   generateSchemaTypes,
   renameComponent,
-} from "@openapi-codegen/typescript";
+} from "@sschw/openapi-codegen-typescript";
 
 export default defineConfig({
   myAPI: {
@@ -215,12 +217,12 @@ Example:
 ```ts
 // openapi-codegen.config.ts
 
-import { defineConfig } from "@openapi-codegen/cli";
+import { defineConfig } from "@sschw/openapi-codegen-cli";
 import {
   generateReactQueryComponents,
   generateSchemaTypes,
   renameComponent,
-} from "@openapi-codegen/typescript";
+} from "@sschw/openapi-codegen-typescript";
 
 export default defineConfig({
   myAPI: {
