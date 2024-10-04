@@ -42,7 +42,8 @@ function getEnumMembers(
     let enumValueNode: ts.Expression | undefined = undefined;
 
     if (typeof enumValue === "string") {
-      enumName = /^[A-Za-z_$]/.test(enumValue) ? enumValue : `"${enumValue}"`;
+      // Enum name must be wrapped in quotes if it starts with a number or contains special characters (except _ and $)
+      enumName = /^[A-Za-z_$][A-Za-z0-9_$]+$/.test(enumValue) ? enumValue : `"${enumValue}"`;
       enumValueNode = f.createStringLiteral(enumValue);
     } else if (typeof enumValue === "number") {
       enumName = convertNumberToWord(enumValue)
