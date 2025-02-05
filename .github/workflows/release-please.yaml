@@ -18,6 +18,24 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           default-branch: main
 
+      # The logic to run the changelog through prettier
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.pr }}
+        with:
+          ref: ${{ fromJson(steps.release.outputs.pr).headBranchName }}
+
+      - name: Run CHANGELOG.md through Prettier
+        if: ${{ steps.release.outputs.pr }}
+        run: npx prettier --write CHANGELOG.md
+
+      - name: Commit and push
+        if: ${{ steps.release.outputs.pr }}
+        run: |
+          git add CHANGELOG.md
+          git commit --amend --no-edit --no-verify
+          git push
+
       # The logic below handles the npm publication:
       - name: Checkout Repository
         uses: actions/checkout@v4
